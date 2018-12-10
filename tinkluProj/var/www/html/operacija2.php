@@ -68,16 +68,16 @@ $_SESSION['prev'] = "operacija2";
 		echo"<td><button ";
 			if(containsTime($row['id'], $tmpdate, $_SESSION['user'])){
 				if(uzsiregines($row['id'], $tmpdate, $_SESSION['user'])){
-					echo"style=\"background-color:red;color:black;\"";
+					echo"style=\"background-color:red;color:black; type=\"submit\" name=\"id2\" value=\"$tmpdate.$row[id]\"\"";
 				}
-				echo"style=\"background-color:yellow;color:black;\"";
+				echo"style=\"background-color:yellow;color:black; type=\"submit\" name=\"id\" value=\"$tmpdate.$row[id]\"\"";
 			}else{
-				echo"style=\"background-color: green ;color:black;\"";
+				echo"style=\"background-color: green ;color:black; type=\"submit\" name=\"id\" value=\"$tmpdate.$row[id]\"\"";
 			}
 		if($tmpdate < $today){
 			echo" disabled ";
 		}
-			echo" type=\"submit\" name=\"id\" value=\"$tmpdate.$row[id]\"</button>$tmp</td>";
+			echo" </button>$tmp</td>";
 		}
 		$i++;
 		echo"</tr>";

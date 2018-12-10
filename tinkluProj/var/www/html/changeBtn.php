@@ -1,4 +1,3 @@
- <html>
 <?php 
 
 include("include/nustatymai.php");
@@ -10,7 +9,7 @@ if (!isset($_SESSION['prev']) || (($_SESSION['prev'] != "index") && ($_SESSION['
 }
   
 $_SESSION['prev'] = "changeBtn"; 
-console_log( $_POST['id'] );
+if($_POST['id'] != NULL){
 $pieces = explode(".", $_POST['id']);
 $diena = $pieces[0];
 $laikas = $pieces[1];
@@ -32,7 +31,25 @@ if(containsTime($laikas, $diena, $user)){
 
 header("Location:operacija2.php");
 exit;
+}else{
+	$pieces = explode(".", $_POST['id2']);
+	$diena = $pieces[0];
+	$laikas = $pieces[1];
+	console_log( $diena );
+	console_log( $laikas );
+	$user = $_SESSION['user'];
 
+	console_log( $sql );
+	echo "<h2>" . $sql . "</h2>";
+	echo "nesuveike anas";
+	$tmpp = getClient($diena, $laikas, $user);
+	console_log( $tmpp['Vardas'] );
+
+	var_dump($tmpp);
+	echo "$tmpp[Vardas] $tmpp[Pavarde]";
+	echo "nesuveike anas";
+	
+
+}
 
 ?>
-	  </html>

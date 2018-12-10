@@ -144,6 +144,21 @@ function dropPasl($ids, $user){
 		return $result;
 }
 
+function getClient($timeid, $date, $user){
+	$dbc=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+		if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
+		$id = getIdFromLogin($user);
+		$sql = "SELECT * FROM Specialistas 
+		JOIN Specialistu_laikas ON  Specialistu_laikas.id_Vartotojas =  Specialistas.id WHERE 
+		Specialistu_laikas.Diena = '$timeid' AND 
+		Specialistu_laikas.id_Darbo_laikas = '$date' AND 
+		Specialistu_laikas.id_Specialistas = '$id';";
+			var_dump($sql);
+			$result = mysqli_query($dbc, $sql);  
+			console_log( $sql );
+			var_dump($result);
+			return $result;
+}
 
 
 function containsTime($timeid, $date, $user){
